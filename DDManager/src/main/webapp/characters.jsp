@@ -1,10 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<title>Welcome to DD Character Manager</title>
-</head>
-<body>
-<h1>Ici on mettra la liste des persos</h1>
+<%@ include file="/WEB-INF/jsp/include.jsp" %>
 
-</body>
-</html>
+<%-- Redirected because we can't set the welcome page to a virtual URL. --%>
+<c:redirect url="/hello.html"/>
+

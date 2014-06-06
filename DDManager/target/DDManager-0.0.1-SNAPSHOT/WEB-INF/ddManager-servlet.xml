@@ -6,6 +6,6 @@
        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 
-  <bean name="/hello.html" class="fr.DDManager.web.HelloController"/>
+  <bean name="/hello.html" class="fr.DDManager.web.CharaController"/>
 
 </beans>
