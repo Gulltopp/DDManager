@@ -5,6 +5,7 @@
 </head>
 <body>
 <h1>Ici on mettra la liste des persos</h1>
+il est : ${now}
 <c:out value="${now}"/>
 </body>
 </html>
