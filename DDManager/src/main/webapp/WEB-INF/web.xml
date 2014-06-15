@@ -17,9 +17,14 @@
 	</servlet-mapping>
 	
 	<welcome-file-list>
-		<welcome-file>characters.jsp</welcome-file>
-	</welcome-file-list>
+    	<welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 
-
+  <jsp-config>
+    <taglib>
+      <taglib-uri>/spring</taglib-uri>
+      <taglib-location>/WEB-INF/tld/spring-form.tld</taglib-location>
+    </taglib>
+  </jsp-config>
 
 </web-app>

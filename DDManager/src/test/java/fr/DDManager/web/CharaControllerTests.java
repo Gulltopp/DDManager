@@ -1,16 +1,16 @@
 package fr.DDManager.web;
 
-import org.springframework.web.servlet.mvc.Controller;
-import org.springframework.web.servlet.ModelAndView;
+import junit.framework.TestCase;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import junit.framework.TestCase;
-import java.io.IOException;
+import org.springframework.web.servlet.ModelAndView;
+
+import fr.DDManager.model.Character;
+import fr.DDManager.service.CharacterManagerImpl;
 
 public class CharaControllerTests extends TestCase {
 
@@ -18,11 +18,14 @@ public class CharaControllerTests extends TestCase {
 
     public void testHandleRequestView() throws Exception{
         CharaController controller = new CharaController();
+        controller.setCharacterManager(new CharacterManagerImpl());
+		
         ModelAndView modelAndView = controller.handleRequest(null, null);
         
         assertEquals("charas", modelAndView.getViewName());
         assertNotNull(modelAndView.getModel());
-        String nowValue = (String) modelAndView.getModel().get("now");
+        Map modelMap=(Map) modelAndView.getModel().get("model");
+        String nowValue = (String) modelMap.get("now");
         assertNotNull(nowValue);
     }
 

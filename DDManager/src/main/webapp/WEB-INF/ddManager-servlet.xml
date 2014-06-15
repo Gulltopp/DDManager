@@ -5,12 +5,65 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-
-	<bean name="/hello.html" class="fr.DDManager.web.CharaController" />
+<!-- beans de test -->
+<bean id="gulltopp" class="fr.DDManager.model.Character">
+	<property name="name" value="Gulltopp"/>
+	<property name="playerName" value="Cedric"/>
+	<property name="level" value="15"/>
+	<property name="race" value="nain"/>
+	<property name="experience" value="50000"/>
+	<property name="maxHp" value="150"/>
+	<property name="bloodiedValue" value="75"/>
+	<property name="characterClass" value="Fighter"/>
+	<property name="surgesPerDay" value="12"/>
+	<property name="surgeValue" value="39"/>
+	<property name="speed" value="5"/>
+	<property name="strength" value="16"/>
+	<property name="constitution" value="15"/>
+	<property name="dexterity" value="13"/>
+	<property name="intelligence" value="12"/>
+	<property name="wisdom" value="15"/>
+	<property name="charisma" value="11"/>
+</bean>
+<bean id="gulltopp2" class="fr.DDManager.model.Character">
+	<property name="name" value="Gulltopp2"/>
+	<property name="playerName" value="Cedric"/>
+	<property name="level" value="16"/>
+	<property name="race" value="nain"/>
+	<property name="experience" value="55000"/>
+	<property name="maxHp" value="100"/>
+	<property name="bloodiedValue" value="50"/>
+	<property name="characterClass" value="Fighter"/>
+	<property name="surgesPerDay" value="15"/>
+	<property name="surgeValue" value="25"/>
+	<property name="speed" value="6"/>
+	<property name="strength" value="18"/>
+	<property name="constitution" value="16"/>
+	<property name="dexterity" value="16"/>
+	<property name="intelligence" value="18"/>
+	<property name="wisdom" value="14"/>
+	<property name="charisma" value="10"/>
+</bean>
+<bean id="characterManager" class="fr.DDManager.service.CharacterManagerImpl">
+	<property name="characters">
+            <list>
+                <ref bean="gulltopp"/>
+                <ref bean="gulltopp2"/>
+            </list>
+        </property>
+</bean>
+<!-- end bean de tests -->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="messages"/>
+    </bean>
+	<bean name="/characters.html" class="fr.DDManager.web.CharaController" >
+		<property name="characterManager" ref="characterManager"/>
+	</bean>
 	
 	<bean id="viewResolver"	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	
 </beans>
