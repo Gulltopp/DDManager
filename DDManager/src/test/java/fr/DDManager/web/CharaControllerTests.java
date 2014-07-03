@@ -9,7 +9,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.ModelAndView;
 
-import fr.DDManager.model.Character;
+import fr.DDManager.model.Charakter;
 import fr.DDManager.service.CharacterManagerImpl;
 
 public class CharaControllerTests extends TestCase {
@@ -17,7 +17,7 @@ public class CharaControllerTests extends TestCase {
     protected final Log logger = LogFactory.getLog(getClass());
 
     public void testHandleRequestView() throws Exception{
-        CharaController controller = new CharaController();
+        CharacterController controller = new CharacterController();
         controller.setCharacterManager(new CharacterManagerImpl());
 		
         ModelAndView modelAndView = controller.handleRequest(null, null);

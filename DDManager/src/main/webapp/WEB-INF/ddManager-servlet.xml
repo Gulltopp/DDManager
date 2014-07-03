@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
+<context:component-scan base-package="fr.DDManager.web" />
 <!-- beans de test -->
-<bean id="gulltopp" class="fr.DDManager.model.Character">
+<bean id="gulltopp" class="fr.DDManager.model.Charakter">
 	<property name="name" value="Gulltopp"/>
 	<property name="playerName" value="Cedric"/>
 	<property name="level" value="15"/>
@@ -25,7 +30,7 @@
 	<property name="wisdom" value="15"/>
 	<property name="charisma" value="11"/>
 </bean>
-<bean id="gulltopp2" class="fr.DDManager.model.Character">
+<bean id="gulltopp2" class="fr.DDManager.model.Charakter">
 	<property name="name" value="Gulltopp2"/>
 	<property name="playerName" value="Cedric"/>
 	<property name="level" value="16"/>
@@ -56,10 +61,8 @@
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename" value="messages"/>
     </bean>
-	<bean name="/characters.html" class="fr.DDManager.web.CharaController" >
-		<property name="characterManager" ref="characterManager"/>
-	</bean>
-	
+    
+    
 	<bean id="viewResolver"	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
 		<property name="prefix" value="/WEB-INF/jsp/"></property>

@@ -1,6 +1,14 @@
 package fr.DDManager.model;
 
-public class Character {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="CONTACTS")
+public class Charakter {
 	String name;
 	String playerName;
 	String race;
@@ -28,10 +36,10 @@ public class Character {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Character() {
+	public Charakter() {
 		setName("");
 	}
-	public Character(int id, String name) {
+	public Charakter(int id, String name) {
 		setName(name);
 	}
 	public String getPlayerName() {
