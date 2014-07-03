@@ -8,5 +8,8 @@ import fr.DDManager.model.Charakter;
 public interface CharacterManager extends Serializable{
 
 	public List<Charakter> getCharacters();
-	public Charakter getCharacterByName(String name);
+	public void addCharacter(Charakter character);
+    public void removeCharacter (Integer id);
+    public void saveCharacter (Charakter character);
+    
 }

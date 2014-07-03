@@ -6,28 +6,66 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+
 @Entity
-@Table(name="CONTACTS")
+@Table(name="CHARACTERS")
 public class Charakter {
+	
+	@Id
+    @Column(name="ID")
+    @GeneratedValue
+    private Integer id;
+	
+	@Column(name="name")
 	String name;
+	
+	@Column(name="playerName")
 	String playerName;
+	
+	@Column(name="race")
 	String race;
+	
+	@Column(name="characterClass")
 	String characterClass;
+	
+	@Column(name="level")
 	int level;
+	
+	@Column(name="experience")
 	int experience;
 	
+	@Column(name="strength")
 	int strength;
+	
+	@Column(name="constitution")
 	int constitution;
+	
+	@Column(name="dexterity")
 	int dexterity;
+	
+	@Column(name="intelligence")
 	int intelligence;
+	
+	@Column(name="wisdom")
 	int wisdom;
+	
+	@Column(name="charisma")
 	int charisma;
 	
+	@Column(name="speed")
 	int speed;
 	
+	@Column(name="maxHp")
 	int maxHp;
+	
+	@Column(name="bloodiedValue")
 	int bloodiedValue;
+	
+	@Column(name="surgesPerDay")
 	int surgesPerDay;
+
+	@Column(name="surgeValue")
 	int surgeValue;
 	
 	public String getName() {

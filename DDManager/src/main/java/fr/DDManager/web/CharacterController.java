@@ -1,51 +1,64 @@
 package fr.DDManager.web;
 
-import java.io.IOException;
-import java.lang.annotation.Annotation;
-import java.util.HashMap;
 import java.util.Map;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import fr.DDManager.model.Charakter;
 import fr.DDManager.service.CharacterManager;
 
 @Controller
-@RequestMapping("/characters")
 public class CharacterController {
 
-    protected final Log logger = LogFactory.getLog(getClass());
-    private CharacterManager characterManager;
+	protected final Log logger = LogFactory.getLog(getClass());
 
-    
-    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        logger.info("il semble qu'on passe vers la view characters");
-        Map<String, Object> myModel = new HashMap<String, Object>();
-        logger.info("les persos"+characterManager.getCharacters());
-        myModel.put("characters", characterManager.getCharacters());
-        return new ModelAndView("characterList", "myModel", myModel);
-    }
-    
-    public ModelAndView handlebis (HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        logger.info("il semble qu'on passe vers la view characters");
-        Map<String, Object> myModel = new HashMap<String, Object>();
-        logger.info("les persos"+characterManager.getCharacters());
-        myModel.put("characters", characterManager.getCharacters());
-        return new ModelAndView("characterList", "myModel", myModel);
-    }
+	@Autowired
+	private CharacterManager characterManager;
+
+	@RequestMapping("/index")
+	public String listContacts(Map<String, Object> map) {
+
+		map.put("charakter", new Charakter());
+		map.put("charakterList", characterManager.getCharacters());
+
+		return "characterList";
+	}
+
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String addContact(@ModelAttribute("Charakter") Charakter character,
+			BindingResult result) {
+
+		characterManager.addCharacter(character);
+		return "redirect:/index";
+	}
+
+	@RequestMapping("/delete/{characterId}")
+	public String deleteContact(@PathVariable("characterId") Integer characterId) {
+
+		characterManager.removeCharacter(characterId);
+
+		return "redirect:/index";
+	}
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String updateContact(
+			@ModelAttribute("Charakter") Charakter character,
+			BindingResult result) {
+
+		characterManager.saveCharacter(character);
+		return "redirect:/index";
+	}
 
 	public void setCharacterManager(CharacterManager characterManager) {
 		this.characterManager = characterManager;
 	}
-
 
 }

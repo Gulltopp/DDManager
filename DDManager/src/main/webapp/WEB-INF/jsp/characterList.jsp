@@ -7,9 +7,36 @@
 <body>
 	<h1>Ici on mettra la liste des persos</h1>
 	<h2>Les persos (on fera du fmt plus tard)</h2>
-	<c:forEach items="${myModel.characters}" var="currentChar">
+
+
+	<c:forEach items="${charakterList}" var="currentChar">
 		<div>${currentChar.name}</div>
-		<div><a href="<c:url  value="/characterView.html"/>?characterName=${currentChar.name}">Voir</a></div>
 	</c:forEach>
+
+
+	<h2>Ajouter un perso</h2>
+
+	<form:form method="post" action="add.html" commandName="charakter">
+ 
+name: <form:input path="name" />		<br />
+playername: <form:input path="playerName" />		<br />
+characterClass: <form:input path="characterClass" />		<br />
+level: <form:input path="level" />		<br />
+experience: <form:input path="experience" />		<br />
+strength:<form:input path="strength" />		<br />
+constitution:<form:input path="constitution" />		<br />
+dexterity: <form:input path="dexterity" />		<br />
+intelligence:<form:input path="intelligence" />		<br />
+wisdom: <form:input path="wisdom" />		<br />
+charisma: <form:input path="charisma" />		<br />
+speed: <form:input path="speed" />		<br />
+maxHp:<form:input path="maxHp" />		<br />
+bloodiedValue: <form:input path="bloodiedValue" />		<br />
+surgesPerDay: <form:input path="surgesPerDay" />		<br />
+surgeValue:<form:input path="surgeValue" />		<br />
+<input type="submit" value="Envoyer"/>
+	</form:form>
+
+
 </body>
 </html>

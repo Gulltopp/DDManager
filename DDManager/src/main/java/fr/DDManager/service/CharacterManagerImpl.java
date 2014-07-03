@@ -1,9 +1,11 @@
 package fr.DDManager.service;
 
 import java.util.List;
-import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
+import fr.DDManager.dao.CharacterDAO;
 import fr.DDManager.model.Charakter;
 
 public class CharacterManagerImpl implements CharacterManager{
@@ -12,6 +14,9 @@ public class CharacterManagerImpl implements CharacterManager{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Autowired
+	private CharacterDAO characterDAO;
 
 		public List<Charakter> getCharacters(){
 			return characters;
@@ -21,13 +26,24 @@ public class CharacterManagerImpl implements CharacterManager{
 			this.characters = characters;
 		}
 		
-		public Charakter getCharacterByName(String name){
-			for (Charakter chara:characters){
-				if (chara.getName().equals(name)){
-					return chara;
-				}
-			}
-			return null;
+		
+		@Override
+		@Transactional
+		public void addCharacter(Charakter character) {
+			characterDAO.addCharacter(character);
+			
+		}
+
+		@Override
+		@Transactional
+		public void removeCharacter(Integer id) {
+			characterDAO.removeCharacter(id);			
+		}
+
+		@Override
+		@Transactional
+		public void saveCharacter(Charakter character) {
+			characterDAO.saveCharacter(character);
 		}
 		
 }
