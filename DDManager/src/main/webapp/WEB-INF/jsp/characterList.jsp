@@ -10,7 +10,7 @@
 
 
 	<c:forEach items="${charakterList}" var="currentChar">
-		<div>${currentChar.name}</div>
+		<div>${currentChar.name}</div><a href="delete/${currentChar.id}">delete</a>
 	</c:forEach>
 
 
