@@ -1,0 +1,2 @@
+create table CHARACTERS (id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),name VARCHAR(30),playerName VARCHAR(30), race VARCHAR(30), characterClass VARCHAR(30),level INTEGER,experience INTEGER,strength INTEGER,constitution INTEGER,dexterity INTEGER,intelligence INTEGER,wisdom INTEGER,charisma INTEGER,speed INTEGER,maxHp INTEGER,bloodiedValue INTEGER,surgesPerDay INTEGER,surgeValue INTEGER);
+create table hibernate_unique_key (next_hi INTEGER); 

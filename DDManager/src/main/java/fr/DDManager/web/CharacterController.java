@@ -33,7 +33,7 @@ public class CharacterController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addContact(@ModelAttribute("Charakter") Charakter character,
+	public String addContact(@ModelAttribute("charakter") Charakter character,
 			BindingResult result) {
 
 		characterManager.addCharacter(character);

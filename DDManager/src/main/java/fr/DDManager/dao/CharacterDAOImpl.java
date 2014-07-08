@@ -22,6 +22,8 @@ public class CharacterDAOImpl implements CharacterDAO{
 
 	@Override
 	public List<Charakter> listCharacters() {
+		
+		
 		return sessionFactory.getCurrentSession().createCriteria(Charakter.class).list();
 	}
 

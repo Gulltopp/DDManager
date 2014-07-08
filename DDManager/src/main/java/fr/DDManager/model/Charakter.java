@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.context.annotation.Primary;
+
 
 
 @Entity
@@ -13,7 +15,7 @@ import javax.persistence.Table;
 public class Charakter {
 	
 	@Id
-    @Column(name="ID")
+    @Column(name="id")
     @GeneratedValue
     private Integer id;
 	
@@ -175,6 +177,12 @@ public class Charakter {
 	}
 	public void setSurgeValue(int surgeValue) {
 		this.surgeValue = surgeValue;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 }

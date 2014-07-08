@@ -21,6 +21,7 @@
 name: <form:input path="name" />		<br />
 playername: <form:input path="playerName" />		<br />
 characterClass: <form:input path="characterClass" />		<br />
+Race: <form:input path="race" />
 level: <form:input path="level" />		<br />
 experience: <form:input path="experience" />		<br />
 strength:<form:input path="strength" />		<br />

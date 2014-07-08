@@ -3,13 +3,14 @@ package fr.DDManager.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.DDManager.dao.CharacterDAO;
 import fr.DDManager.model.Charakter;
 
+@Service
 public class CharacterManagerImpl implements CharacterManager{
-	private List<Charakter> characters;
 		/**
 	 * 
 	 */
@@ -18,14 +19,11 @@ public class CharacterManagerImpl implements CharacterManager{
 	@Autowired
 	private CharacterDAO characterDAO;
 
+		@Transactional
 		public List<Charakter> getCharacters(){
-			return characters;
+			return characterDAO.listCharacters();
 		}
 
-		public void setCharacters(List<Charakter> characters) {
-			this.characters = characters;
-		}
-		
 		
 		@Override
 		@Transactional
