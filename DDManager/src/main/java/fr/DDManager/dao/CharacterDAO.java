@@ -10,4 +10,5 @@ public interface CharacterDAO {
 	public List<Charakter> listCharacters();
 	public void removeCharacter (Integer id);
 	public void saveCharacter (Charakter character);
+	public Charakter getcharacter(Integer id);
 }

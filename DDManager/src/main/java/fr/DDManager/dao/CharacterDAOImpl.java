@@ -22,8 +22,6 @@ public class CharacterDAOImpl implements CharacterDAO{
 
 	@Override
 	public List<Charakter> listCharacters() {
-		
-		
 		return sessionFactory.getCurrentSession().createCriteria(Charakter.class).list();
 	}
 
@@ -37,9 +35,16 @@ public class CharacterDAOImpl implements CharacterDAO{
 		
 	}
 
+	public Charakter getcharacter(Integer id){
+		Charakter character = (Charakter) sessionFactory.getCurrentSession().get(Charakter.class, id);
+		return character;
+	}
+	
+	
+	
 	@Override
 	public void saveCharacter(Charakter character) {
-		sessionFactory.getCurrentSession().save(character);
+		sessionFactory.getCurrentSession().update(character);
 		
 	}
 

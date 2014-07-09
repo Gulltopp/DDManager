@@ -2,6 +2,9 @@ package fr.DDManager.service;
 
 import java.util.List;
 
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +40,13 @@ public class CharacterManagerImpl implements CharacterManager{
 		public void removeCharacter(Integer id) {
 			characterDAO.removeCharacter(id);			
 		}
-
+		
+		@Override
+		@Transactional
+		public Charakter getCharacter(Integer id){
+			return characterDAO.getcharacter(id);
+		}
+		
 		@Override
 		@Transactional
 		public void saveCharacter(Charakter character) {

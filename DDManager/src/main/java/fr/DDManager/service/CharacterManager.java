@@ -11,5 +11,5 @@ public interface CharacterManager extends Serializable{
 	public void addCharacter(Charakter character);
     public void removeCharacter (Integer id);
     public void saveCharacter (Charakter character);
-    
+    public Charakter getCharacter(Integer id);
 }

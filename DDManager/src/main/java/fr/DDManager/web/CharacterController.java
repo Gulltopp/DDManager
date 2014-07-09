@@ -37,24 +37,31 @@ public class CharacterController {
 			BindingResult result) {
 
 		characterManager.addCharacter(character);
-		return "redirect:/index";
+		return "redirect:/index.html";
 	}
 
-	@RequestMapping("/delete/{characterId}")
+	@RequestMapping(value = "/delete/{characterId}",method = RequestMethod.GET)
 	public String deleteContact(@PathVariable("characterId") Integer characterId) {
 
 		characterManager.removeCharacter(characterId);
 
-		return "redirect:/index";
+		return "redirect:/index.html";
+	}
+	
+	@RequestMapping(value = "/viewChar/{characterId}",method = RequestMethod.GET)
+	public String viewChar(@PathVariable("characterId") Integer characterId, Map<String, Object> map) {
+		Charakter myChar=characterManager.getCharacter(characterId);
+			map.put("charakter",myChar);
+	return "viewChar";
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String updateContact(
-			@ModelAttribute("Charakter") Charakter character,
-			BindingResult result) {
+	public String updateContact(@ModelAttribute("Charakter") Charakter character,
+			BindingResult result,Map<String, Object> map) {
 
 		characterManager.saveCharacter(character);
-		return "redirect:/index";
+		map.put("charakter",character);
+		return "viewChar";
 	}
 
 	public void setCharacterManager(CharacterManager characterManager) {
