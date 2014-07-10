@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import fr.DDManager.model.Charakter;
 import fr.DDManager.service.CharacterManager;
@@ -63,7 +65,25 @@ public class CharacterController {
 		map.put("charakter",character);
 		return "viewChar";
 	}
-
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(
+		@RequestParam(value = "error", required = false) String error,
+		@RequestParam(value = "logout", required = false) String logout,
+		Map<String, Object> map) {
+ 
+		if (error != null) {
+			map.put("error", "Mauvaise combinaison login/pwd");
+		}
+ 
+		if (logout != null) {
+			map.put("msg", "deconexion reussie");
+		}
+ 
+		return "login";
+ 
+	}
+	
 	public void setCharacterManager(CharacterManager characterManager) {
 		this.characterManager = characterManager;
 	}
