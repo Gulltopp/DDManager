@@ -11,4 +11,5 @@ public interface CharacterDAO {
 	public void removeCharacter (Integer id);
 	public void saveCharacter (Charakter character);
 	public Charakter getcharacter(Integer id);
+	//test encore
 }
