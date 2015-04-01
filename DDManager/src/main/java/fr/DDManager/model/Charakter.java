@@ -1,10 +1,16 @@
 package fr.DDManager.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 
@@ -19,55 +25,62 @@ public class Charakter {
     private Integer id;
 	
 	@Column(name="name")
-	String name;
+	private String name;
 	
 	@Column(name="playerName")
-	String playerName;
+	private String playerName;
 	
 	@Column(name="race")
-	String race;
+	private String race;
 	
 	@Column(name="characterClass")
-	String characterClass;
+	private String characterClass;
 	
 	@Column(name="level")
-	int level;
+	private int level;
 	
 	@Column(name="experience")
-	int experience;
+	private int experience;
 	
 	@Column(name="strength")
-	int strength;
+	private int strength;
 	
 	@Column(name="constitution")
-	int constitution;
+	private int constitution;
 	
 	@Column(name="dexterity")
-	int dexterity;
+	private int dexterity;
 	
 	@Column(name="intelligence")
-	int intelligence;
+	private int intelligence;
 	
 	@Column(name="wisdom")
-	int wisdom;
+	private int wisdom;
 	
 	@Column(name="charisma")
-	int charisma;
+	private int charisma;
 	
 	@Column(name="speed")
-	int speed;
+	private int speed;
 	
 	@Column(name="maxHp")
-	int maxHp;
+	private int maxHp;
 	
 	@Column(name="bloodiedValue")
-	int bloodiedValue;
+	private int bloodiedValue;
 	
 	@Column(name="surgesPerDay")
-	int surgesPerDay;
+	private int surgesPerDay;
 
 	@Column(name="surgeValue")
-	int surgeValue;
+	private int surgeValue;
+	
+	@ManyToMany(fetch=FetchType.EAGER)
+    @JoinTable(name="CHAR_POWER",joinColumns=
+            @JoinColumn(name="id_character", referencedColumnName="ID"),
+        inverseJoinColumns=
+            @JoinColumn(name="id_power", referencedColumnName="ID"))
+	private Set<Power> powers;
 	
 	public String getName() {
 		return name;
@@ -182,6 +195,12 @@ public class Charakter {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public Set<Power> getPowers() {
+		return powers;
+	}
+	public void setPowers(Set<Power> powers) {
+		this.powers = powers;
 	}
 
 }

@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ include file="/WEB-INF/jsp/include.jsp"%>
+<%@ include file="/jsp/include.jsp"%>
 <html>
 <head>
 <title>Welcome to DD Character Manager</title>
 </head>
 <body>
-	<%@ include file="/WEB-INF/jsp/characterHeader.jsp" %>
+	<%@ include file="/jsp/characterHeader.jsp" %>
 	
 <c:url value="/update.html" var="updateurl"/>
 	<form:form method="post" action="${updateurl}" modelAttribute="charakter" >
@@ -38,7 +38,11 @@ surgeValue:<form:input path="surgeValue" />		<br />
 </fieldset>
 <input type="submit" value="Envoyer"/>
 	</form:form>
-
+	<ul>
+	    <c:forEach items="${charakter.powers}" var="power">
+	        <li>${power.name}</li>
+	    </c:forEach>
+    </ul>
 
 </body>
 </html>
